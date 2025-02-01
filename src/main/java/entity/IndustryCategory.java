@@ -1,11 +1,15 @@
 package entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 @TableName
 public class IndustryCategory {
+    @TableId(type = IdType.ASSIGN_ID)
     private Integer id;
     private String name;
     private Integer creator;
@@ -14,6 +18,7 @@ public class IndustryCategory {
     private String updater;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/beijing")
     private Date update_time;
+    @TableLogic
     private Boolean deleted;
 
 
