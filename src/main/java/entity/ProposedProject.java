@@ -10,23 +10,23 @@ import java.util.Date;
 public class ProposedProject {
     @TableId
     private Integer id;
-    private String name;
-    private Integer type;
-    private String constructionUnit;
-    private String legalRepresentative;
+    private String project_name;
+    private Integer project_type;
+    private String construction_unit;
+    private String legal_representative;
     private String phone;
-    private String constructionSite;
-    private String constructionNature;
-    private Integer industryCategoryId;
-    private Long totalInvestment;
+    private String construction_site;
+    private String construction_nature;
+    private Integer industry_category_id;
+    private Long total_investment;
     private Integer status;
-    private String createUser;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/shanghai")
-    private Date createTime;
-    private String updateUser;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/shanghai")
-    private Date updateTime;
-    private Boolean isDeleted;
+    private String creator;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/beijing")
+    private Date create_time;
+    private String updater;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/beijing")
+    private Date update_time;
+    private Boolean deleted;
 
     @TableLogic
     private Integer del_flag;
@@ -38,29 +38,29 @@ public class ProposedProject {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+    public String getProject_name() {
+        return project_name;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setProject_name(String project_name) {
+        this.project_name = project_name;
     }
-    public Integer getType() {
-        return type;
+    public Integer getProject_type() {
+        return project_type;
     }
-    public void setType(Integer type) {
-        this.type = type;
+    public void setProject_type(Integer project_type) {
+        this.project_type = project_type;
     }
-    public String getConstructionUnit() {
-        return constructionUnit;
+    public String getConstruction_unit() {
+        return construction_unit;
     }
-    public void setConstructionUnit(String constructionUnit) {
-        this.constructionUnit = constructionUnit;
+    public void setConstruction_unit(String construction_unit) {
+        this.construction_unit = construction_unit;
     }
-    public String getLegalRepresentative() {
-        return legalRepresentative;
+    public String getLegal_representative() {
+        return legal_representative;
     }
-    public void setLegalRepresentative(String legalRepresentative) {
-        this.legalRepresentative = legalRepresentative;
+    public void setLegal_representative(String legal_representative) {
+        this.legal_representative = legal_representative;
     }
     public String getPhone() {
         return phone;
@@ -68,29 +68,29 @@ public class ProposedProject {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    public String getConstructionSite() {
-        return constructionSite;
+    public String getConstruction_site() {
+        return construction_site;
     }
-    public void setConstructionSite(String constructionSite) {
-        this.constructionSite = constructionSite;
+    public void setConstruction_site(String construction_site) {
+        this.construction_site = construction_site;
     }
-    public String getConstructionNature() {
-        return constructionNature;
+    public String getConstruction_nature() {
+        return construction_nature;
     }
-    public void setConstructionNature(String constructionNature) {
-        this.constructionNature = constructionNature;
+    public void setConstruction_nature(String construction_nature) {
+        this.construction_nature = construction_nature;
     }
-    public Integer getIndustryCategoryId() {
-        return industryCategoryId;
+    public Integer getIndustry_category_id() {
+        return industry_category_id;
     }
-    public void setIndustryCategoryId(Integer industryCategoryId) {
-        this.industryCategoryId = industryCategoryId;
+    public void setIndustry_category_id(Integer industry_category_id) {
+        this.industry_category_id = industry_category_id;
     }
-    public Long getTotalInvestment() {
-        return totalInvestment;
+    public Long getTotal_investment() {
+        return total_investment;
     }
-    public void setTotalInvestment(Long totalInvestment) {
-        this.totalInvestment = totalInvestment;
+    public void setTotal_investment(Long total_investment) {
+        this.total_investment = total_investment;
     }
     public Integer getStatus() {
         return status;
@@ -98,35 +98,35 @@ public class ProposedProject {
     public void setStatus(Integer status) {
         this.status = status;
     }
-    public String getCreateUser() {
-        return createUser;
+    public String getCreator() {
+        return creator;
     }
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
-    public String getUpdateUser() {
-        return updateUser;
+    public String getUpdater() {
+        return updater;
     }
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+    public void setUpdater(String updater) {
+        this.updater = updater;
     }
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getUpdate_time() {
+        return update_time;
     }
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
     }
     public Boolean getIsDeleted() {
-        return isDeleted;
+        return deleted;
     }
     public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
+        this.deleted = isDeleted;
     }
     public Integer getDel_flag() {
         return del_flag;

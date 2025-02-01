@@ -8,14 +8,16 @@ import java.util.Date;
 public class IndustryCategory {
     private Integer id;
     private String name;
-    private Integer createUser;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/shanghai")
-    private Date createTime;
-    private String updateUser;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/shanghai")
-    private Date updateTime;
+    private Integer creator;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/beijing")
+    private Date create_time;
+    private String updater;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/beijing")
+    private Date update_time;
     private Boolean deleted;
 
+
+    //get & set
     public Integer getId() {
         return id;
     }
@@ -28,29 +30,29 @@ public class IndustryCategory {
     public void setName(String name) {
         this.name = name;
     }
-    public Integer getCreateUser() {
-        return createUser;
+    public Integer getCreator() {
+        return creator;
     }
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
+    public void setCreator(Integer creator) {
+        this.creator = creator;
     }
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
     public String getUpdateUser() {
-        return updateUser;
+        return updater;
     }
     public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+        this.updater = updateUser;
     }
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getUpdate_time() {
+        return update_time;
     }
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
     }
     public Boolean getDeleted() {
         return deleted;
