@@ -1,19 +1,20 @@
 package controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import entity.IndustryCategory;
-import jakarta.annotation.Resource;
-import service.IndustryCategoryService;
+import entity.PageResultIndustryCategoryRespVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import service.impl.IndustryCategoryService;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.HashMap;
 import org.springframework.http.*;
+
 @RestController
 @RequestMapping
 public class IndustryCategoryController {
-    @Resource
-    private IndustryCategoryService industryCategoryService;
+
+    @Autowired
+    IndustryCategoryService industryCategoryService;
 
     @PutMapping
     public ResponseEntity<Map<String,Object>>
@@ -21,7 +22,7 @@ public class IndustryCategoryController {
         IndustryCategory industryCategory = new IndustryCategory();
         industryCategory.setId(id);
         industryCategory.setName(name);
-        boolean success = industryCategoryService.updateById(industryCategory);
+        boolean success = industryCategoryService.updateIndustryCategory(industryCategory);
         Map<String,Object> result = new HashMap<>();
         result.put("code",success?0:-1);
         result.put("data",success);
@@ -34,7 +35,7 @@ public class IndustryCategoryController {
     create(@RequestParam String name){
         IndustryCategory industryCategory = new IndustryCategory();
         industryCategory.setName(name);
-        boolean success = industryCategoryService.save(industryCategory);
+        boolean success = industryCategoryService.createIndustryCategory(industryCategory);
         Map<String,Object> result = new HashMap<>();
         result.put("code",success?0:-1);
         result.put("data",success);
@@ -45,9 +46,7 @@ public class IndustryCategoryController {
     @GetMapping
     public ResponseEntity<Map<String,Object>>
     get(@RequestParam Integer pageNo,@RequestParam Integer pageSize){
-        Page<IndustryCategory> page = new Page<>(pageNo,pageSize);
-        Page<IndustryCategory> pageResult = industryCategoryService.page(page,
-                new QueryWrapper<>());
+        PageResultIndustryCategoryRespVO pageResult = industryCategoryService.listIndustryCategoryWithPage(pageNo,pageSize);
         Map<String,Object> result = new HashMap<>();
         result.put("code",0);
         result.put("data",pageResult);
@@ -55,10 +54,11 @@ public class IndustryCategoryController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    //ID
     @GetMapping
     public ResponseEntity<Map<String,Object>>
     get(@RequestParam Integer id){
-        IndustryCategory industryCategory = industryCategoryService.getById(id);
+        IndustryCategory industryCategory = industryCategoryService.getIndustryCategoryById(id);
         Map<String,Object> result = new HashMap<>();
         result.put("code",industryCategory!=null?0:-1);
         result.put("data",industryCategory);
@@ -69,7 +69,7 @@ public class IndustryCategoryController {
     @DeleteMapping
     public ResponseEntity<Map<String,Object>>
     delete(@RequestParam Integer id){
-        boolean success = industryCategoryService.removeById(id);
+        boolean success = industryCategoryService.deleteIndustryCategory(id);
         Map<String,Object> result = new HashMap<>();
         result.put("code",success?0:-1);
         result.put("data",success);
