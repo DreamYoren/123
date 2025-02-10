@@ -8,59 +8,45 @@ import entity.IndustryCategoryRespVO;
 import entity.PageResultIndustryCategoryRespVO;
 import jakarta.annotation.Resource;
 import mapper.IndustryCategoryMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import service.IndustryCategoryService;
 
 import java.util.stream.Collectors;
 
 @Service
-public class IndustryCategoryServiceImpl extends ServiceImpl<IndustryCategoryMapper, IndustryCategory> implements service.impl.IndustryCategoryService {
+public class IndustryCategoryServiceImpl extends ServiceImpl<IndustryCategoryMapper, IndustryCategory> implements IndustryCategoryService {
 
-    @Resource
+    @Autowired
     private IndustryCategoryMapper industryCategoryMapper;
 
     @Override
     public boolean createIndustryCategory(IndustryCategory industryCategory){
-        int result = industryCategoryMapper.insert(industryCategory);
-        return result > 0;
+        return this.save(industryCategory);
     }
 
     @Override
     public boolean updateIndustryCategory(IndustryCategory industryCategory) {
-        int result = industryCategoryMapper.updateById(industryCategory);
-        return result > 0;
+       return this.updateById(industryCategory);
     }
 
     @Override
     public boolean deleteIndustryCategory(Integer id) {
-        IndustryCategory industryCategory = new IndustryCategory();
-        industryCategory.setId(id);
-        industryCategory.setDeleted(true);
-        int result = industryCategoryMapper.updateById(industryCategory);
-        return result > 0;
+        return this.removeById(id);
     }
 
     @Override
     public IndustryCategory getIndustryCategoryById(Integer id) {
-        return industryCategoryMapper.selectById(id);
+        return this.getById(id);
     }
 
     @Override
-    public PageResultIndustryCategoryRespVO listIndustryCategoryWithPage(int currentPage, int pageSize) {
+    public Page<IndustryCategory> getPage(int currentPage, int pageSize) {
         Page<IndustryCategory> page = new Page<>(currentPage, pageSize);
-        industryCategoryMapper.selectPage(page , new QueryWrapper<IndustryCategory>().eq("deleted",false));
-        PageResultIndustryCategoryRespVO resultVO = new PageResultIndustryCategoryRespVO();
-        resultVO.setTotal((int) page.getTotal());
-        resultVO.setList(page.getRecords().stream().map(this::convertToRespVO).collect(Collectors.toList()));
-        return resultVO;
+        return this.page(page);
     }
 
-    private IndustryCategoryRespVO convertToRespVO(IndustryCategory industryCategory) {
-        IndustryCategoryRespVO respVO = new IndustryCategoryRespVO();
-        respVO.setId(industryCategory.getId());
-        respVO.setName(industryCategory.getName());
-        respVO.setCreateTime(industryCategory.getCreate_time());
-        return respVO;
-    }
+
 
 
 }

@@ -1,5 +1,6 @@
-package service.impl;
+package service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import entity.IndustryCategory;
 import entity.PageResultIndustryCategoryRespVO;
@@ -14,5 +15,5 @@ public interface IndustryCategoryService extends IService<IndustryCategory> {
 
     IndustryCategory getIndustryCategoryById(Integer id);
 
-    PageResultIndustryCategoryRespVO listIndustryCategoryWithPage(int currentPage, int pageSize);
+    Page<IndustryCategory> getPage(int currentPage, int pageSize);
 }

@@ -18,7 +18,7 @@ public class IndustryCategory implements Serializable {
     @TableId(type = IdType.ASSIGN_ID)
     private Integer id;
     private String name;
-    private Integer creator;
+    private String creator;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/beijing")
     private Date create_time;
     private String updater;

@@ -1,9 +1,9 @@
 package controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import entity.IndustryCategory;
-import entity.PageResultIndustryCategoryRespVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import service.impl.IndustryCategoryService;
+import service.IndustryCategoryService;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class IndustryCategoryController {
     @Autowired
     IndustryCategoryService industryCategoryService;
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<Map<String,Object>>
     update(@RequestParam Integer id,@RequestParam String name){
         IndustryCategory industryCategory = new IndustryCategory();
@@ -30,7 +30,7 @@ public class IndustryCategoryController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Map<String,Object>>
     create(@RequestParam String name){
         IndustryCategory industryCategory = new IndustryCategory();
@@ -43,10 +43,10 @@ public class IndustryCategoryController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/page")
     public ResponseEntity<Map<String,Object>>
     get(@RequestParam Integer pageNo,@RequestParam Integer pageSize){
-        PageResultIndustryCategoryRespVO pageResult = industryCategoryService.listIndustryCategoryWithPage(pageNo,pageSize);
+        Page<IndustryCategory> pageResult = industryCategoryService.getPage(pageNo,pageSize);
         Map<String,Object> result = new HashMap<>();
         result.put("code",0);
         result.put("data",pageResult);
@@ -55,7 +55,7 @@ public class IndustryCategoryController {
     }
 
     //ID
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<Map<String,Object>>
     get(@RequestParam Integer id){
         IndustryCategory industryCategory = industryCategoryService.getIndustryCategoryById(id);
@@ -66,7 +66,7 @@ public class IndustryCategoryController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete")
     public ResponseEntity<Map<String,Object>>
     delete(@RequestParam Integer id){
         boolean success = industryCategoryService.deleteIndustryCategory(id);
